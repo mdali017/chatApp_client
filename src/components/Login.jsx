@@ -1,6 +1,7 @@
 // Client: src/components/Login.jsx
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { FetchUrls } from "./FetchURL";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -10,7 +11,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch(FetchUrls("login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
